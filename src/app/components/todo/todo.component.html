@@ -1,0 +1,45 @@
+<h1>Todolist</h1>
+<div class="row">
+    <div class="col-md-6">
+        <form (submit)="onFormSubmit()">
+
+            <div class="form-group">
+                <label for="taskName">Task Name: </label>
+                <input type="text" class="form-control" id="taskName" [(ngModel)]="newTask.title" name="newTask"
+                    class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="newTaskDesciption">Task Description: </label>
+                <textarea type="text" class="form-control" id="newTaskDesciption" [(ngModel)]="newTask.desciption"
+                    name="newTaskDescription" class="form-control" rows=3></textarea>
+            </div>
+
+            <button *ngIf="!editMode"
+            [disabled]="!(newTask.title && newTask.title.length > 0)" type="submit"
+                class="btn btn-primary">Submit</button>
+            <button *ngIf="editMode" (click)="onDoneClick()" type="button" class="btn btn-primary">Done</button>
+
+        </form>
+    </div>
+    <div class="col-md-6">
+        <p>Tasks: {{tasks.length}}</p>
+
+        <div class="list-group">
+            <a (click)="onTaskClick(item)" *ngFor="let item of tasks" href="#"
+                class="list-group-item list-group-item-action flex-column align-items-start"
+                [class.done-task]="item.done">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{item.title}}</h5>
+                    <small>{{item.done ? 'Done' : 'Undone'}}</small>
+                </div>
+                <p class="mb-1">{{item.desciption}}</p>
+                <button appPropogate (click)="onTaskDelete(item)" class="btn btn-danger">
+                    <i class="fa fa-trash fa-sm"></i>
+                </button>
+                <button (click)="onTaskEdit(item)" class="btn btn-secondary"><i class="fa fa-edit"></i></button>
+            </a>
+        </div>
+    </div>
+
+</div>

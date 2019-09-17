@@ -1,13 +1,28 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>FirstApp</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    #preloader {
+      position: fixed;
+      top: calc(50% - 100px);
+      left: calc(50% - 100px);
+    }
+  </style>
 </head>
+ 
 <body>
-  <app-root></app-root>
+  <app-root>
+  <img src="./assets/Spinner-0.6s-200px.svg" id="preloader" alt="">
+  </app-root>
+
+ 
+
 </body>
+
 </html>
