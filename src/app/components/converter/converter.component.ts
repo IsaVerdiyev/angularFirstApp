@@ -40,7 +40,7 @@ export class ConverterComponent implements OnInit {
   }
 
   onFormSubmit():void{
-    
+    this.convert();
   }
 
   convert():void{
@@ -51,7 +51,7 @@ export class ConverterComponent implements OnInit {
     this.convert();
   }
   
-  async onCurrencyChange():void{
+  async onCurrencyChange(){
     this.getRate();
     this.convert();
   }
