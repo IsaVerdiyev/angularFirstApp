@@ -12,8 +12,9 @@ export class BakuBusComponent implements OnInit {
 
   buses: any;
 
-  ngOnInit() {
-
+  async ngOnInit() {
+    this.buses = await this.httpClient.get<any>('https://localhost:44398/api/buses').toPromise();
+    console.log(this.buses);
   }
 
 }
