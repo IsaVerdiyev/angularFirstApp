@@ -10,6 +10,7 @@ import { PropogateDirective } from './directives/propogate.directive';
 import { ConverterComponent } from './components/converter/converter.component';
 import { DigitsPipe } from './pipe/digits.pipe';
 import { BakuBusComponent } from './components/baku-bus/baku-bus.component';
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,10 @@ import { BakuBusComponent } from './components/baku-bus/baku-bus.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDQ3mpFWtosWuRW0-SVQFUmjxuTSguUrIs'
+    })
   ], 
   providers: [],
   bootstrap: [AppComponent]

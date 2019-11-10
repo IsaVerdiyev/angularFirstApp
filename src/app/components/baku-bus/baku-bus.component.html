@@ -1,1 +1,8 @@
 <p>baku-bus works!</p>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <agm-marker *ngFor="let bus of buses | keyvalue" 
+        [latitude]="bus.value['@attributes']['LATITUDE']"
+        [longitude]="bus.value['@attributes']['LONGITUDE']"
+        [label]="bus.value['@attributes'].DISPLAY_ROUTE_CODE">
+    </agm-marker>
+</agm-map>
