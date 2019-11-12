@@ -1,6 +1,11 @@
 <p>baku-bus works!</p>
+<div class="form-group">
+    <select name="bus" [(ngModel)]="number"  id="bus" class="form-control">
+        <option *ngFor='let item of numbers'>{{item}}</option>
+    </select>
+</div>
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-    <agm-marker *ngFor="let bus of buses | keyvalue" 
+    <agm-marker *ngFor="let bus of buses | busNumber: number | keyvalue " 
         [latitude]="bus.value['@attributes']['LATITUDE']"
         [longitude]="bus.value['@attributes']['LONGITUDE']"
         [label]="bus.value['@attributes'].DISPLAY_ROUTE_CODE">

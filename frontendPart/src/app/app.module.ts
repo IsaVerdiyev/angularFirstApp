@@ -8,9 +8,10 @@ import { CounterComponent } from './components/counter/counter.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { PropogateDirective } from './directives/propogate.directive';
 import { ConverterComponent } from './components/converter/converter.component';
-import { DigitsPipe } from './pipe/digits.pipe';
+import { DigitsPipe } from './pipes/digits.pipe';
 import { BakuBusComponent } from './components/baku-bus/baku-bus.component';
 import { AgmCoreModule } from '@agm/core';
+import { BusNumberPipe } from './pipes/bus-number.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { AgmCoreModule } from '@agm/core';
     PropogateDirective,
     ConverterComponent,
     DigitsPipe,
-    BakuBusComponent
+    BakuBusComponent,
+    BusNumberPipe
   ],
   imports: [
     BrowserModule,
