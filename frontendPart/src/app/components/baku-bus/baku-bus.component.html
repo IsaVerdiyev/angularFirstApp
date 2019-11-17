@@ -1,7 +1,7 @@
 <p>baku-bus works!</p>
 <div class="form-group">
     <select name="bus" [(ngModel)]="number"  id="bus" class="form-control">
-        <option *ngFor='let item of numbers'>{{item}}</option>
+        <option *ngFor='let item of numbers | keyvalue'>{{item.value}}</option>
     </select>
 </div>
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">

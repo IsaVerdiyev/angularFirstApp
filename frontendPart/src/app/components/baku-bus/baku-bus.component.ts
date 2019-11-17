@@ -11,15 +11,17 @@ export class BakuBusComponent implements OnInit {
   constructor(private httpClient: HttpClient, private zone: NgZone, private ref: ChangeDetectorRef) { }
 
   buses = new Map<string, any>();
-  numbers= new Set<string>();
-  number = this.numbers[0];
+  numbers= new Map<string, string>();
+  number: string;
   lat = 40.4093;
   lng = 49.8671;
   zoom = 12;
 
   async ngOnInit() {
-    this.numbers.add('all');
+    this.numbers.set('all', 'all');
     await this.getBuses();
+    this.number = this.numbers.get('all');
+    console.log(this.number);
 
     setInterval( async() => {
        await this.getBuses()}, 10000
@@ -35,7 +37,9 @@ export class BakuBusComponent implements OnInit {
 
    async updateBuses(recievedBuses:Array<any>){
     for(var bus of  recievedBuses){
-      this.numbers.add(bus['@attributes'].DISPLAY_ROUTE_CODE);
+      if(!this.numbers.has(bus['@attributes'].DISPLAY_ROUTE_CODE)){
+        this.numbers.set(bus['@attributes'].DISPLAY_ROUTE_CODE, bus['@attributes'].DISPLAY_ROUTE_CODE);
+      }
       if(!this.buses.has(bus['@attributes'].BUS_ID))
         this.buses.set(bus['@attributes'].BUS_ID, bus);   
       else {
